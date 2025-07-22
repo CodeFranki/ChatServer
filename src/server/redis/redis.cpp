@@ -133,55 +133,6 @@ void Redis::observer_channel_message()
     cerr << ">>>>>>>>>>>>>>>observer_channel_message<<<<<<<<<<<<<<<<" << endl;
 }
 
-// void Redis::observer_channel_message()
-// {
-//     redisReply *reply = nullptr;
-//     while (REDIS_OK == redisGetReply(this->_subscribe_context, (void **)&reply))
-//     {
-//         // 订阅收到的消息是一个带三元素的数组
-//         // cout << reply->element << endl;
-//         // if (reply != nullptr && reply->element[2] != nullptr && reply->element[2]->str != nullptr)
-//         // {
-//         //     // 给业务层上报通道上发生的消息
-//         //     _notify_message_handler(atoi(reply->element[1]->str), reply->element[2]->str);
-//         // }
-
-//         // freeReplyObject(reply);
-//         if (reply->type == REDIS_REPLY_ARRAY && reply->elements >= 3)
-//         {
-//             // 确保第二个和第三个元素存在且是字符串
-//             if (reply->element[1]->type == REDIS_REPLY_STRING && reply->element[2]->type == REDIS_REPLY_STRING)
-//             {
-//                 _notify_message_handler(atoi(reply->element[1]->str), reply->element[2]->str);
-//             }
-//         }
-
-//         freeReplyObject(reply);
-//     }
-
-//     cerr << ">>>>>>>>>>>>> observer_channel_message quit <<<<<<<<<<<<<" << endl;
-// }
-
-// void observer_channel_message()
-// {
-//     redisReply *reply = nullptr;
-//     while (REDIS_OK == redisGetReply(this->_subscribe_context, (void **)&reply))
-//     {
-//         if (reply->type == REDIS_REPLY_ARRAY && reply->elements >= 3)
-//         {
-//             // 确保第二个和第三个元素存在且是字符串
-//             if (reply->element[1]->type == REDIS_REPLY_STRING && reply->element[2]->type == REDIS_REPLY_STRING)
-//             {
-//                 _notify_message_handler(atoi(reply->element[1]->str), reply->element[2]->str);
-//             }
-//         }
-
-//         freeReplyObject(reply);
-//     }
-
-//     std::cerr << ">>>>>>>>>>>>> observer_channel_message quit <<<<<<<<<<<<<" << std::endl;
-// }
-
 // 初始化向业务层上报通道消息的回调对象
 void Redis::init_notify_handler(function<void(int, string)> fn)
 {

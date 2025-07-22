@@ -5,6 +5,7 @@
 #include <hiredis/hiredis.h>
 #include <thread>
 #include <functional>
+#include <vector>
 using namespace std;
 
 class Redis
